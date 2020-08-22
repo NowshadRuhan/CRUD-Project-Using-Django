@@ -8,3 +8,10 @@
  2. Retrieve – read, retrieve, search, or view existing entries as a list(List View) or retrieve a particular entry in detail (Detail View).
  3. Update – update or edit existing entries in a table in the database.
  4. Delete – delete, deactivate, or remove existing entries in a table in the database.
+
+# About Models:
+*In this project i used two models.
+
+1. Brand models.
+2. Product models.
+*Relation between Brand models and Product models are OneToMany.
