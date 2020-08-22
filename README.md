@@ -14,4 +14,5 @@
 
 1. Brand models.
 2. Product models.
+
 *Relation between Brand models and Product models are OneToMany.
