@@ -16,3 +16,14 @@
 2. Product models.
 
 *Relation between Brand models and Product models are OneToMany.
+
+# About Forms:
+1. BrandForm custom form used by using Brand model. 
+2. ProductForm custom form used by using Product model.
+
+**In this forms i used some of CharFields and custom ChoiceFields.
+
+# About Templates:
+Here i used 6 custom templates, for desgin and GUI.
+
+Live search and others option inculeds.
