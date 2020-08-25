@@ -1,0 +1,76 @@
+{% extends "crud_app/base.html" %}
+{% block body_block %}
+<h1 align="center">Brand Page</h1>
+
+{% ifnotequal  deleteText 'no'  %}
+<div class="alert alert-success" role="alert">
+  {{ deleteText }}
+</div>
+{% endifnotequal %}
+
+<div class="row" style="margin-top:20px; padding:30px; border:1px solid blue; border-radius:3px;">
+  <div class="col-md-6">
+    <h1 align="left">New Brand :</h1>
+
+    <form class="form-horizontal" align="left" method="post">
+      {{ formBrand.as_p }}
+      {% csrf_token %}
+      <input class="btn btn-success" type="submit" name="submit" value="SUBMIT">
+    </form>
+  </div>
+
+  <div class="col-md-6 table-responsive">
+    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th class="th-sm">Brand Name
+          </th>
+          <th class="th-sm">Owner
+          </th>
+          <th class="th-sm">Mobile Number
+          </th>
+          <th class="th-sm">Address
+          </th>
+          <th class="th-sm">Action
+          </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% if brandList %}
+          {% for brand in brandList %}
+          <tr>
+            <td>
+              <a href="{% url 'crud:brand_product' proudctBrand_id=brand.id %}">
+                {{ brand.brandName }}
+              </a>
+            </td>
+            <td>{{ brand.brandOwnerName }}</td>
+            <td>{{ brand.brandMobileNumber }}</td>
+            <td>{{ brand.brandMainAddress }}</td>
+            <td>
+              <a class="btn btn-primary" href="{% url 'crud:brand_edit' id=brand.id %}">Edit</a>
+              <a onclick="return confirm('Are You Sure!')" class="btn btn-danger" href="{% url 'crud:brand_delete' id=brand.id %}">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspan="4" align="center"> No Brand</td>
+
+          </tr>
+        {% endif %}
+
+      </tbody>
+      <tfoot>
+
+      </tfoot>
+
+    </table>
+  </div>
+
+</div>
+
+
+
+{% endblock %}

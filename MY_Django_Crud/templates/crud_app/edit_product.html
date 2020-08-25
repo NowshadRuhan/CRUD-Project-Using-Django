@@ -1,0 +1,32 @@
+{% extends "crud_app/base.html" %}
+{% block body_block %}
+<h1 align="center">Edit Brand :</h1>
+
+{% ifnotequal updateText 'no'  %}
+<div class="alert alert-success" role="alert">
+  {{ updateText }}
+</div>
+{% endifnotequal %}
+
+<div class="row" style="margin-top:20px; padding:30px; border:1px solid blue; border-radius:3px;">
+
+  <div class="col-md-2">
+
+  </div>
+  <div class="col-md-8">
+
+    <form class="form-horizontal" align="center" method="post">
+      {{ productForm.as_p }}
+      {% csrf_token %}
+      <input class="btn btn-success" type="submit" name="submit" value="UPDATE">
+    </form>
+  </div>
+  <div class="col-md-2">
+
+  </div>
+
+</div>
+
+
+
+{% endblock %}

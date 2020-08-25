@@ -1,0 +1,74 @@
+{% extends "crud_app/base.html" %}
+{% block body_block %}
+<h1 align="center">Product Page</h1>
+
+<div class="row" style="margin-top:20px; padding:30px; border:1px solid blue; border-radius:3px;">
+  <div class="col-md-6">
+    <h1 align="left">Brand :</h1>
+    {% if brand %}
+      {% for row in brand %}
+        <h2>Name : {{ row.brandName }} </h2>
+        <h2>Owner : {{ row.brandOwnerName }} </h2>
+        <h2>Mobile : {{ row.brandMobileNumber }} </h2>
+        <h2>Address : {{ row.brandMainAddress }} </h2>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <div class="col-md-6 ">
+  <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th class="th-sm">Product Name
+          </th>
+          <th class="th-sm">Price
+          </th>
+          <th class="th-sm">Size
+          </th>
+          <th class="th-sm">Availability
+          </th>
+          <th class="th-sm">Action
+          </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% if productList %}
+          {% for product in productList %}
+          <tr>
+            <td>  {{ product.productName }}  </td>
+            <td>{{ product.productPrice }}</td>
+            <td>{{ product.productSize }}</td>
+            <td>
+              {% if product.productAvailability == 1 %}
+                    Yes
+              {% else %}
+                    No
+              {% endif %}
+            </td>
+            <td>
+              <a class="btn btn-primary" href="{% url 'crud:edit_product' id=product.id %}">Edit</a>
+              <a class="btn btn-danger" href="{% url 'crud:product_delete' id=product.id %}">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspan="4" align="center"> No Brand</td>
+
+          </tr>
+        {% endif %}
+
+      </tbody>
+      <tfoot>
+
+      </tfoot>
+
+    </table>
+  </div>
+
+</div>
+
+
+
+{% endblock %}
